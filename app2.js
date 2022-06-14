@@ -1,5 +1,6 @@
 ////----------Adding Backend-----//
 
+require('dotenv').config();
 const express = require('express');
 const bodyparser = require('body-parser');
 const mongoose = require('mongoose');
@@ -12,10 +13,18 @@ app.use(express.static('public'));
 app.use(bodyparser.urlencoded({
     extended: true
 }));
-mongoose.connect('mongodb://localhost:27017/mydb', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
+// mongoose.connect('mongodb://localhost:27017/mydb', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// });
+
+mongoose.connect(process.env.DATABASE, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("DATABASE CONNECTED");
+    })
 
 var db = mongoose.connection;
 

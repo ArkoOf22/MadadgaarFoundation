@@ -25,7 +25,7 @@ db.once('open', () => console.log("Connected to database"));
 app.post("/sign_up", (req, res) => {
     var name = req.body.name;
     var email = req.body.email;
-    var pno = req.body.phoneno;
+    var pno = req.body.phno;
     var msg = req.body.message;
 
     var data = {
